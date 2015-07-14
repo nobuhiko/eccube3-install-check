@@ -28,11 +28,19 @@ if (version_compare(phpversion(), '5.3.9', '<')) {
     echo ("PHPのバージョンはPHP5.3.9以降を必要とします。<br>");
 }
 
-$required_modules = array('pdo', 'phar', 'gd', 'freetype2', 'mbstring', 'zlib', 'ctype', 'session', 'JSON', 'xml', 'libxml', 'OpenSSL', 'zip', 'cURL');
+$required_modules = array('pdo', 'phar', 'gd', 'mbstring', 'zlib', 'ctype', 'session', 'JSON', 'xml', 'libxml', 'OpenSSL', 'zip', 'cURL');
 $recommended_module = array('hash', 'APC', 'mcrypt');
 foreach ($required_modules as $module) {
     if (!extension_loaded($module)) {
         echo ("[必須PHPライブラリ] " . $module . " 拡張モジュールが有効になっていません。<br>");
+        $error++;
+    }
+}
+
+if (extension_loaded('gd')) {
+    $gdInfo = gd_info();
+    if (empty($gdInfo['FreeType Support'])) {
+        echo ("[必須PHPライブラリ] FreeType 拡張モジュールが有効になっていません。<br>");
         $error++;
     }
 }
