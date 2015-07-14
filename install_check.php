@@ -20,6 +20,7 @@
  */
 
 $error = 0;
+$warning = 0;
 
 echo 'EC-CUBE 3 <a href="http://www.ec-cube.net/product/system.php">ソフトウェア要件</a><br>';
 
@@ -53,7 +54,7 @@ if (!extension_loaded('pdo_mysql') && !extension_loaded('pdo_pgsql')) {
 foreach ($recommended_module as $module) {
     if (!extension_loaded($module)) {
         echo ('[推奨PHPライブラリ]' . $module . ' 拡張モジュールが有効になっていません。<br>');
-        $error++;
+        $warning++;
     }
 }
 
@@ -75,7 +76,7 @@ if (version_compare(mysql_get_client_info(), '5.1', '<')) {
 //
 //
 if ($error == 0) {
-    echo ("EC-CUBE3の動作要件をすべて満たしています。<br>");
+    echo ("EC-CUBE3の動作要件を満たしているようです。<br>");
 }
 
 echo 'created by <a href="http://nob-log.info/">nob-log.info<a>';
