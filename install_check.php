@@ -53,7 +53,7 @@ if (!extension_loaded('pdo_mysql') && !extension_loaded('pdo_pgsql')) {
 
 foreach ($recommended_module as $module) {
     if (!extension_loaded($module)) {
-        echo ('[推奨PHPライブラリ]' . $module . ' 拡張モジュールが有効になっていません。<br>');
+        echo ('[推奨PHPライブラリ] ' . $module . ' 拡張モジュールが有効になっていません。<br>');
         $warning++;
     }
 }
