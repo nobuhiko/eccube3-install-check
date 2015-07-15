@@ -63,7 +63,7 @@ if ( function_exists('apache_get_modules') && in_array('mod_rewrite',apache_get_
 } elseif ( isset($_SERVER['IIS_UrlRewriteModule']) ) {
     $mod_rewrite = TRUE;
 } elseif ( !function_exists('apache_get_modules')) {
-    echo ('mod_rewriteが有効になっているかは不明です。 <br>');
+    echo ('mod_rewriteが有効になっているか不明です。 <br>');
     $warning++;
 
 } else {
@@ -81,7 +81,7 @@ if (function_exists('mysql_get_client_info') && version_compare(mysql_get_client
 //
 //
 if ($error == 0) {
-    echo ("EC-CUBE3の動作要件を満たしているようです。<br>");
+    echo ("<strong>EC-CUBE3の動作要件を満たしているようです。</strong><br>");
 }
 
 echo 'created by <a href="http://nob-log.info/">nob-log.info<a>';
