@@ -62,15 +62,20 @@ if ( function_exists('apache_get_modules') && in_array('mod_rewrite',apache_get_
     $mod_rewrite = TRUE;
 } elseif ( isset($_SERVER['IIS_UrlRewriteModule']) ) {
     $mod_rewrite = TRUE;
+} elseif ( !function_exists('apache_get_modules')) {
+    echo ('mod_rewriteが有効になっているかは不明です。 <br>');
+    $warning++;
+
 } else {
     echo ('mod_rewriteが有効になっていません。<br>');
     $error++;
 }
 
-if (version_compare(mysql_get_client_info(), '5.1', '<')) {
+/* localhost のmysqlのバージョンを調べても仕方がない
+if (function_exists('mysql_get_client_info') && version_compare(mysql_get_client_info(), '5.1', '<')) {
     echo ("MySQLのバージョンは5.1以降を必要とします。<br>");
     $error++;
-}
+}*/
 
 // todo postgresのバージョンは無理？
 //
