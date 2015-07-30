@@ -68,3 +68,4 @@ build: off
 
 test_script:
   - php install_check.php
+  - php -r 'var_dump($_SERVER);'
