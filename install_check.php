@@ -29,7 +29,8 @@ if (version_compare(phpversion(), '5.3.9', '<')) {
     echo ("PHPのバージョンはPHP5.3.9以降を必要とします。<br>");
 }
 
-$required_modules = array('pdo', 'phar', 'gd', 'mbstring', 'zlib', 'ctype', 'session', 'JSON', 'xml', 'libxml', 'OpenSSL', 'zip', 'cURL');
+$required_modules = array('pdo', 'phar', 'mbstring', 'zlib',
+'ctype', 'session', 'JSON', 'xml', 'libxml', 'OpenSSL', 'zip', 'cURL', 'fileinfo');
 $recommended_module = array('hash', 'APC', 'mcrypt');
 foreach ($required_modules as $module) {
     if (!extension_loaded($module)) {
@@ -38,13 +39,14 @@ foreach ($required_modules as $module) {
     }
 }
 
+/*
 if (extension_loaded('gd')) {
     $gdInfo = gd_info();
     if (empty($gdInfo['FreeType Support'])) {
         echo ("[必須PHPライブラリ] FreeType 拡張モジュールが有効になっていません。<br>");
         $error++;
     }
-}
+}*/
 
 if (!extension_loaded('pdo_mysql') && !extension_loaded('pdo_pgsql')) {
     echo ('[必須PHPライブラリ] pdo_pgsql又はpdo_mysql 拡張モジュールを有効にしてください。<br>');
